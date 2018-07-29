@@ -1,0 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+
+$background-color: #00B0FF;
+
+body {
+  margin: 0 auto;
+  background-color: $background-color;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}

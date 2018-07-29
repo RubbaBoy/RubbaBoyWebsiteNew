@@ -1,0 +1,127 @@
+$seek-node-color: #0091EA;
+$border-color: black;
+
+:host {
+  /* This is equivalent of the 'body' selector of a page. */
+}
+
+h1 {
+  margin: 0;
+  font-size: 3em;
+}
+
+.header {
+  text-align: center;
+  padding-top: 10vh;
+}
+
+/* Seeker on the right */
+
+.seek-container {
+  width: 50px;
+  position: fixed;
+  align-items: center;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  right: 0;
+  top: 0;
+  padding-left: 25px;
+}
+
+.seek-node {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background: $seek-node-color;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+.seek-desc {
+  height: 17px;
+  width: 100px;
+  right: 100px;
+  text-align: right;
+  margin-right: -75px;
+  cursor: default;
+  position: absolute;
+  opacity: 0;
+  user-select: none;
+
+  transition: margin-right 500ms, opacity 400ms;
+}
+
+.seek-node:hover .seek-desc {
+  margin-right: -50px;
+  opacity: 1;
+}
+
+/* End of seeker */
+
+//.content {
+//  float: left;
+//  width: 50vw !important;
+//  margin-left: 25vw !important;
+//  margin-top: 200px;
+//  position: absolute;
+//}
+
+.section {
+  width: 50vw !important;
+  height: 200px;
+
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  margin: 1em;
+  padding: 1em 2em;
+
+  &:hover::before {
+    border-top-color: $border-color; // Make borders visible
+    border-right-color: $border-color;
+    transition:
+            width 0.25s ease-out, // Width expands first
+            height 0.25s ease-out 0.25s; // And then height
+  }
+
+  &:hover::after {
+    border-bottom-color: $border-color; // Make borders visible
+    border-left-color: $border-color;
+    transition:
+            border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
+            width 0.25s ease-out 0.5s, // And then exanding width
+            height 0.25s ease-out 0.75s; // And finally height
+  }
+}
+
+#content {
+  float: left;
+  margin-top: 200px;
+  position: absolute;
+}
+
+.inner-content {
+  margin-top: 50px;
+}
+
+@media (min-width: 0) {
+  #content {
+    width: 50vw !important;
+    margin-left: 25vw !important;
+  }
+
+  .inner-content {
+    width: 50vw !important;
+  }
+}
+
+@media (max-width: 600px) and (orientation:portrait) {
+  #content {
+    width: 80vw !important;
+    margin-left: 10vw !important;
+  }
+
+  .inner-content {
+    width: 80vw !important;
+  }
+}
