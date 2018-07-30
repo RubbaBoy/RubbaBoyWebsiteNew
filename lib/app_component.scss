@@ -69,25 +69,3 @@ h1 {
 .inner-content {
   margin-top: 50px;
 }
-
-@media (min-width: 0) {
-  #content {
-    width: 50vw !important;
-    margin-left: 25vw !important;
-  }
-
-  .inner-content {
-    width: 50vw !important;
-  }
-}
-
-@media (max-width: 600px) and (orientation: portrait) {
-  #content {
-    width: 80vw !important;
-    margin-left: 10vw !important;
-  }
-
-  .inner-content {
-    width: 80vw !important;
-  }
-}
