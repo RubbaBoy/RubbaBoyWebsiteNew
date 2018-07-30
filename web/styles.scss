@@ -2,6 +2,13 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 @import url(https://fonts.googleapis.com/css?family=Material+Icons);
 
+$seek-node-color: #0091EA;
+$border-color: white;
+$section-color: black;
+$border-size: 3px;
+//$cyan: #60daaa;
+//$red: #f45e61;
+
 $background-color: #00B0FF;
 
 body {
@@ -11,4 +18,72 @@ body {
 
 * {
   font-family: 'Montserrat', sans-serif;
+}
+
+.section {
+  width: 50vw !important;
+  //height: 200px;
+
+  transition: color 0.25s;
+
+  background: none;
+  box-sizing: border-box;
+  margin: 1em;
+  padding: 1em 2em;
+
+  box-shadow: inset 0 0 0 $border-size transparent;
+  color: transparent;
+  font-size: inherit;
+  font-weight: 700;
+
+  position: relative;
+  vertical-align: middle;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    border: $border-size solid transparent;
+    transition-duration: 0.25s;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &.active {
+    color: $section-color;
+  }
+
+  // Hover styles
+  &.active::before,
+  &.active::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.active::before {
+    border-top-color: $border-color;
+    border-right-color: $border-color;
+    transition: width 0.25s ease-out,
+    height 0.25s ease-out 0.25s;
+  }
+
+  &.active::after {
+    border-bottom-color: $border-color;
+    border-left-color: $border-color;
+    transition: border-color 0s ease-out 0.5s,
+    width 0.25s ease-out 0.5s,
+    height 0.25s ease-out 0.75s;
+  }
 }

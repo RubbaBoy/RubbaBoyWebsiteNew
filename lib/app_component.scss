@@ -1,5 +1,7 @@
 $seek-node-color: #0091EA;
-$border-color: black;
+$border-color: white;
+$cyan: #60daaa;
+$red: #f45e61;
 
 :host {
   /* This is equivalent of the 'body' selector of a page. */
@@ -58,42 +60,6 @@ h1 {
 
 /* End of seeker */
 
-//.content {
-//  float: left;
-//  width: 50vw !important;
-//  margin-left: 25vw !important;
-//  margin-top: 200px;
-//  position: absolute;
-//}
-
-.section {
-  width: 50vw !important;
-  height: 200px;
-
-  background: none;
-  border: 0;
-  box-sizing: border-box;
-  margin: 1em;
-  padding: 1em 2em;
-
-  &:hover::before {
-    border-top-color: $border-color; // Make borders visible
-    border-right-color: $border-color;
-    transition:
-            width 0.25s ease-out, // Width expands first
-            height 0.25s ease-out 0.25s; // And then height
-  }
-
-  &:hover::after {
-    border-bottom-color: $border-color; // Make borders visible
-    border-left-color: $border-color;
-    transition:
-            border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
-            width 0.25s ease-out 0.5s, // And then exanding width
-            height 0.25s ease-out 0.75s; // And finally height
-  }
-}
-
 #content {
   float: left;
   margin-top: 200px;
@@ -115,7 +81,7 @@ h1 {
   }
 }
 
-@media (max-width: 600px) and (orientation:portrait) {
+@media (max-width: 600px) and (orientation: portrait) {
   #content {
     width: 80vw !important;
     margin-left: 10vw !important;

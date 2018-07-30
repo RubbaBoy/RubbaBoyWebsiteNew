@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:angular/angular.dart';
+import 'dart:html';
 //import 'package:angular_components/angular_components.dart';
 
 // AngularDart info: https://webdev.dartlang.org/angular
@@ -11,6 +14,10 @@ import 'package:angular/angular.dart';
   directives: const [],
   providers: const [],
 )
-class AppComponent {
-  // Nothing here yet. All logic is in TodoListComponent.
+class AppComponent implements OnInit {
+
+  @override
+  void ngOnInit() {
+    new Future.delayed(const Duration(milliseconds: 400), () => querySelector(".section").classes.add("active"));
+  }
 }
