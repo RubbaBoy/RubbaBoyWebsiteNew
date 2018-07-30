@@ -37,6 +37,11 @@ h1 {
   background: $seek-node-color;
   cursor: pointer;
   margin: 10px auto;
+
+  &:hover .seek-desc, &.active .seek-desc {
+    margin-right: -50px;
+    opacity: 1;
+  }
 }
 
 .seek-desc {
@@ -51,11 +56,6 @@ h1 {
   user-select: none;
 
   transition: margin-right 500ms, opacity 400ms;
-}
-
-.seek-node:hover .seek-desc {
-  margin-right: -50px;
-  opacity: 1;
 }
 
 /* End of seeker */

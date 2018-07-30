@@ -22,9 +22,26 @@ body {
   color: $secondary;
 }
 
+.section-container {
+  padding-bottom: 50px;
+}
+
+.section-header {
+  margin-left: 50px;
+  opacity: 0;
+
+  .active & {
+    opacity: 1;
+    transition: opacity 0.5s linear 0.75s;
+  }
+}
+
+.section-container:last-of-type {
+  margin-bottom: 1000px;
+}
+
 .section {
   width: 50vw !important;
-  //height: 200px;
 
   transition: color 0.25s;
 
@@ -66,25 +83,25 @@ body {
     opacity: 0;
   }
 
-  &.active p {
+  .active & p {
     opacity: 1;
     transition: opacity 0.5s linear 0.25s;
   }
 
-  &.active::before,
-  &.active::after {
+  .active &::before,
+  .active &::after {
     width: 100%;
     height: 100%;
   }
 
-  &.active::before {
+  .active &::before {
     border-top-color: $border-color;
     border-right-color: $border-color;
     transition: width 0.25s ease-out,
     height 0.25s ease-out 0.25s;
   }
 
-  &.active::after {
+  .active &::after {
     border-bottom-color: $border-color;
     border-left-color: $border-color;
     transition: border-color 0s ease-out 0.5s,
