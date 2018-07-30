@@ -1,7 +1,7 @@
-$seek-node-color: #0091EA;
-$border-color: white;
-$cyan: #60daaa;
-$red: #f45e61;
+$primary: black;
+$secondary: white;
+
+$seek-node-color: $secondary;
 
 :host {
   /* This is equivalent of the 'body' selector of a page. */

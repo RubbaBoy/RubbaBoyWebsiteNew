@@ -18,6 +18,6 @@ class AppComponent implements OnInit {
 
   @override
   void ngOnInit() {
-    new Future.delayed(const Duration(milliseconds: 400), () => querySelector(".section").classes.add("active"));
+    new Future.delayed(const Duration(milliseconds: 1400), () => querySelector(".section").classes.add("active"));
   }
 }
