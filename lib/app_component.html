@@ -47,40 +47,9 @@
         <div class="section-container" section="experience">
             <h2 class="section-header">Experience</h2>
             <div class="section">
-                <div class="info-card">
-                    <h3>Lorem</h3>
-                    <p>
-                        Phasellus sed accumsan leo. Ut ut lobortis elit. Pellentesque nec tempor elit. Aenean pretium
-                        lacus vel mattis ullamcorper.
-                    </p>
-                </div>
-                <div class="info-card">
-                    <h3>Ipsum</h3>
-                    <p>
-                        Phasellus sed accumsan leo. Ut ut lobortis elit. Pellentesque nec tempor elit. Aenean pretium
-                        lacus vel mattis ullamcorper.
-                    </p>
-                </div>
-                <div class="info-card">
-                    <h3>Dolor</h3>
-                    <p>
-                        Phasellus sed accumsan leo. Ut ut lobortis elit. Pellentesque nec tempor elit. Aenean pretium
-                        lacus vel mattis ullamcorper.
-                    </p>
-                </div>
-                <div class="info-card">
-                    <h3>Sit</h3>
-                    <p>
-                        Phasellus sed accumsan leo. Ut ut lobortis elit. Pellentesque nec tempor elit. Aenean pretium
-                        lacus vel mattis ullamcorper.
-                    </p>
-                </div>
-                <div class="info-card">
-                    <h3>Amet</h3>
-                    <p>
-                        Phasellus sed accumsan leo. Ut ut lobortis elit. Pellentesque nec tempor elit. Aenean pretium
-                        lacus vel mattis ullamcorper.
-                    </p>
+                <div class="info-card" *ngFor="let experience of experiences">
+                    <h3>{{experience['name']}}</h3>
+                    <p>{{experience['description']}}</p>
                 </div>
             </div>
         </div>

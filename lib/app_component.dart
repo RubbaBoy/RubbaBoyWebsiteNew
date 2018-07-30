@@ -11,10 +11,45 @@ import 'dart:html';
   selector: 'my-app',
   styleUrls: const ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: const [],
+  directives: const [CORE_DIRECTIVES],
   providers: const [],
 )
 class AppComponent implements OnInit {
+
+  var experiences = [
+    {
+      'name': 'Java',
+      'description': 'I have been using Java for over 4 years. I am very expierenced in the Spigot/Bukkit APIs, with many projects and collaborations under my belt.'
+    },
+    {
+      'name': 'PHP',
+      'description': 'I have been using PHP for around 3 years. I have several private and public projects integrated with several other technologies as well.'
+    },
+    {
+      'name': 'JavaScript',
+      'description': 'I have a around 4 years in JavaScript knowledge, having used many large libraries in many projects, often in combination with other technologies.'
+    },
+    {
+      'name': 'HTML',
+      'description': 'HTML has been the base of my web projects for the 4 years I\'ve been developing for the web.'
+    },
+    {
+      'name': 'CSS',
+      'description': 'CSS, being the only turing complete styling language for the web, has deminished my reputation as a creator by making my websites look significantly worse for the past 4 years.'
+    },
+    {
+      'name': 'Dart',
+      'description': 'I have been learning Dart for several months now, primarily using AngularDart, with plans to use Flutter in the near future.'
+    },
+    {
+      'name': 'Brainfuck',
+      'description': 'I\'ve been programming with Brainfuck for around 2 years on and off when I get the chance to, helping me pass the time away from home.'
+    },
+    {
+      'name': 'SQL',
+      'description': 'SQL, though not a language, has been vital for many of my projects for the past 2 years, primarily using MySQL and SQLite.'
+    },
+  ];
 
   @override
   void ngOnInit() {
@@ -62,7 +97,7 @@ class AppComponent implements OnInit {
     Element sectionToScrollTo = getSection(target.getAttribute('section'), queryClass: '.section-container');
     var yOffset = sectionToScrollTo.documentOffset.y;
     var height = sectionToScrollTo.clientHeight;
-    var middle = yOffset - (height * 0.75);
+    var middle = yOffset - (height * 1);
     window.scrollTo(middle, middle);
   }
 
