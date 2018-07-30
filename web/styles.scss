@@ -40,6 +40,10 @@ body {
   margin-bottom: 1000px;
 }
 
+.bordered {
+  box-shadow: inset 0 0 0 $border-size transparent;
+}
+
 .section {
   width: 100%;
 
@@ -50,7 +54,6 @@ body {
   margin: 1em;
   padding: 1em 2em;
 
-  box-shadow: inset 0 0 0 $border-size transparent;
   color: transparent;
   font-size: inherit;
 
@@ -61,8 +64,8 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 
-  &::before,
-  &::after {
+  .bordered &::before,
+  .bordered &::after {
     box-sizing: inherit;
     content: '';
     position: absolute;
@@ -73,12 +76,12 @@ body {
     transition-duration: 0.25s;
   }
 
-  &::before {
+  .bordered &::before {
     top: 0;
     left: 0;
   }
 
-  &::after {
+  .bordered &::after {
     bottom: 0;
     right: 0;
   }
@@ -92,20 +95,20 @@ body {
     transition: opacity 0.5s linear 0.25s;
   }
 
-  .active &::before,
-  .active &::after {
+  .bordered.active &::before,
+  .bordered.active &::after {
     width: 100%;
     height: 100%;
   }
 
-  .active &::before {
+  .bordered.active &::before {
     border-top-color: $border-color;
     border-right-color: $border-color;
     transition: width 0.25s ease-out,
     height 0.25s ease-out 0.25s;
   }
 
-  .active &::after {
+  .bordered.active &::after {
     border-bottom-color: $border-color;
     border-left-color: $border-color;
     transition: border-color 0s ease-out 0.5s,
@@ -183,9 +186,6 @@ $break-large: 1024px;
   @if $media == handhelds {
     @media only screen and (max-width: $break-large - 1) { @content; }
   }
-  @else if $media == medium-screens {
-    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
-  }
   @else if $media == wide-screens {
     @media only screen and (min-width: $break-large) { @content; }
   }
@@ -197,11 +197,6 @@ $break-large: 1024px;
     margin-left: 10vw !important;
   }
 
-  //@include respond-to(medium-screens) {
-  //  width: 80vw !important;
-  //  margin-left: 10vw !important;
-  //}
-
   @include respond-to(wide-screens) {
     width: 50vw !important;
     margin-left: 25vw !important;
@@ -212,10 +207,6 @@ $break-large: 1024px;
   @include respond-to(handhelds) {
     width: 80vw !important;
   }
-
-  //@include respond-to(medium-screens) {
-  //  width: 80vw !important;
-  //}
 
   @include respond-to(wide-screens) {
     width: 50vw !important;
