@@ -33,7 +33,7 @@ class AppComponent implements OnInit {
         } else {
           for (var element in querySelectorAll('.section-container').reversed) {
             var yOffset = element.documentOffset.y;
-            var middle = yOffset - 120;
+            var middle = yOffset + 220 - window.outerHeight;
 
             if (middle <= window.pageYOffset) {
               activate(element);
