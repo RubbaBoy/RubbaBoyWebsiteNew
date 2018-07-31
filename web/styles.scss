@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
-@import url(https://fonts.googleapis.com/css?family=Material+Icons);
 
 $primary: black;
 $secondary: white;
@@ -21,6 +19,39 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: $secondary;
 }
+
+/* Loading square */
+
+.loading-square {
+  width: 100px;
+  height: 100px;
+
+  position: absolute;
+  margin-left: 50vw;
+  margin-top: 50vh;
+  transform: translate(-50%, -50%);
+}
+
+.loading-stroke {
+    stroke-dasharray: 53px;
+    stroke-dashoffset: 0;
+    animation: loading-stroke-move 2s linear 0ms infinite;
+    fill: none;
+    stroke: $secondary;
+    stroke-width: 2px;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    stroke-opacity: 1;
+    stroke-miterlimit: 4;
+}
+
+@keyframes loading-stroke-move {
+  100% {
+    stroke-dashoffset: 108px;
+  }
+}
+
+/* End loading square */
 
 .section-container {
   padding-bottom: 50px;
@@ -222,7 +253,6 @@ $i: 1;
 }
 
 .project-card {
-  //width: calc((50vw / 3) - 20px);
   width: 300px;
   display: inline-block;
 

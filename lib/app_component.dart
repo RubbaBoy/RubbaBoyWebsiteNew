@@ -2,10 +2,6 @@ import 'dart:async';
 
 import 'package:angular/angular.dart';
 import 'dart:html';
-//import 'package:angular_components/angular_components.dart';
-
-// AngularDart info: https://webdev.dartlang.org/angular
-// Components info: https://webdev.dartlang.org/components
 
 @Component(
   selector: 'my-app',
@@ -21,6 +17,8 @@ class AppComponent implements OnInit {
     var lastChecked = -1;
     var scrolled = true;
 
+    querySelector(".loading-square").remove();
+
     new Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (scrolled) {
         void activate(Element element) {
@@ -33,14 +31,9 @@ class AppComponent implements OnInit {
         if (window.pageYOffset == 0) {
           activate(querySelector('.section-container'));
         } else {
-          var test = 0;
           for (var element in querySelectorAll('.section-container').reversed) {
             var yOffset = element.documentOffset.y;
             var middle = yOffset - 120;
-
-            if (test++ == 1) {
-              print('$middle <= ${window.pageYOffset}');
-            }
 
             if (middle <= window.pageYOffset) {
               activate(element);
