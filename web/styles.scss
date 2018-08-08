@@ -193,13 +193,11 @@ body::-webkit-scrollbar-thumb {
 
   p {
     opacity: 0;
-
     transition: opacity 0.25s ease-out;
   }
 
   .active & h3 {
     opacity: 1;
-
     transition: opacity 0.25s ease-out;
   }
 
