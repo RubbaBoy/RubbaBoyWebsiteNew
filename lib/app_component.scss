@@ -1,4 +1,4 @@
-$primary: black;
+$primary: #171515;
 $secondary: white;
 
 $seek-node-color: $secondary;
@@ -27,6 +27,7 @@ h1 {
 }
 
 .seek-node {
+  display: block;
   border-radius: 50%;
   width: 15px;
   height: 15px;

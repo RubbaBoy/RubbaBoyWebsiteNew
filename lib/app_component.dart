@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:angular/angular.dart';
 import 'dart:html';
@@ -19,6 +20,10 @@ class AppComponent implements OnInit {
 
     querySelector(".loading-square").remove();
 
+    querySelectorAll('a.seek-node').onClick.listen((event) {
+      smoothScrolling(event, offset: -50, duration: 1000);
+    });
+
     new Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (scrolled) {
         void activate(Element element) {
@@ -33,7 +38,7 @@ class AppComponent implements OnInit {
         } else {
           for (var element in querySelectorAll('.section-container').reversed) {
             var yOffset = element.documentOffset.y;
-            var middle = yOffset + 220 - window.outerHeight;
+            var middle = yOffset - window.outerHeight / 2;
 
             if (middle <= window.pageYOffset) {
               activate(element);
@@ -54,18 +59,44 @@ class AppComponent implements OnInit {
     });
   }
 
-  void seekTo(MouseEvent event) {
-    Element target = event.currentTarget;
-    Element sectionToScrollTo = getSection(target.getAttribute('section'), queryClass: '.section-container');
-    var yOffset = sectionToScrollTo.documentOffset.y;
-    var middle = yOffset - 120;
-    window.scrollTo(middle, middle);
-  }
-
   Element getSection(String section, {String queryClass: '.seek-node'}) {
     return querySelectorAll(queryClass).firstWhere((element) {
       return element.getAttribute('section') == section;
     });
+  }
+
+  void smoothScrolling(MouseEvent click, {int offset: 0, int duration: 500}) {
+    click.preventDefault();
+    AnchorElement link = click.target;
+    var anchor = link.getAttribute('section');
+    int targetPosition = getSection(anchor, queryClass: '.section-container').documentOffset.y;
+
+    targetPosition += offset;
+
+    var totalFrames = (duration / (1000 / 60)).round().toDouble();
+    var currentFrame = 0;
+    var currentPosition = window.scrollY.toDouble();
+    var distanceBetween =  targetPosition - currentPosition;
+    double addXFrame = 1 / totalFrames;
+    double xFrame = 0;
+
+    void animation(num frame) {
+      if (totalFrames >= currentFrame) {
+
+        window.scrollTo(0, currentPosition + easeInOutExpo(xFrame += addXFrame) * distanceBetween);
+
+        currentFrame++;
+        window.animationFrame.then(animation);
+      }
+    }
+
+    window.animationFrame.then(animation);
+  }
+
+  double easeInOutExpo(x) {
+    return x == 0 ? 0 : x == 1 ? 1 : x < 0.5 ?
+    pow(2, 20 * x - 10) / 2 :
+    (2 - pow(2, -20 * x + 10)) / 2;
   }
 
   var experiences = [
