@@ -219,19 +219,21 @@ $i: 1;
 @while $i < 10 {
   $card: '.section .info-card:nth-child(#{$i})';
   $project-card: '.project-card:nth-child(#{$i})';
+  $special-button: '.special-button:nth-child(#{$i})';
    #{$card}, #{$card} h3, #{$card} p, #{$card} p::before {
     transition-delay: #{(0.5 + ($i * 0.25)) + 's'} !important;
   }
 
-  #{$project-card}, #{$project-card} h2, #{$project-card} p {
+  #{$project-card}, #{$project-card} h2, #{$project-card} p,
+  #{$special-button} {
     transition-delay: #{($i * 0.25) + 's'} !important;
   }
 
   $first: ($i - 1) * 0.25;
   $second: $first + 0.25;
-  .bordered.active:nth-of-type(3) + .project-examples #{$project-card} .section::before {
-    border-top-color: $border-color;
-    border-right-color: $border-color;
+  .bordered.active:nth-of-type(3):not(.special-button) + .project-examples #{$project-card} .section::before {
+    border-top-color: $border-color !important;
+    border-right-color: $border-color !important;
     transition: border-color 0s ease-out #{$first + 's'},
     width 0.25s ease-out #{$first + 's'},
     height 0.25s ease-out #{$second + 's'} !important;
@@ -240,9 +242,62 @@ $i: 1;
   $third: $second + 0.25;
   $fourth: $third + 0.25;
 
-  .bordered.active:nth-of-type(3) + .project-examples #{$project-card} .section::after {
-    border-bottom-color: $border-color;
-    border-left-color: $border-color;
+  .bordered.active:nth-of-type(3):not(.special-button) + .project-examples #{$project-card} .section::after {
+    border-bottom-color: $border-color !important;
+    border-left-color: $border-color !important;
+    transition: border-color 0s ease-out #{$third + 's'},
+    width 0.25s ease-out #{$third + 's'},
+    height 0.25s ease-out #{$fourth + 's'} !important;
+  }
+
+  $i: $i + 1;
+}
+
+$i: 1;
+@while $i <= 2 {
+  $special-button: '.special-button:nth-child(#{$i})';
+
+  //#{$special-button}, #{$special-button}::before, #{$special-button}::after {
+  #{$special-button} {
+    transition: color 0.25s ease-out #{($i * 0.25) + 's'} !important;
+  }
+
+  #{$special-button} {
+    &::before, &::after {
+      //color: red;
+      transition: border-color 0.25s ease-out #{($i * 0.25) + 's'},
+        //opacity 10s linear #{($i * 1 + 0.25) + 's'},
+      width 0s ease-out #{($i * 0.25 + 0.25) + 's'},
+      height 0s ease-out #{($i * 0.25 + 0.25) + 's'};
+    }
+  }
+
+  #{$special-button}.active {
+    //transition: border-color 0.25s ease-in #{($i * 0.25) + 's'},
+    //width 0 ease-in #{($i * 0.5) + 's'},
+    //height 0 ease-in #{($i * 0.5) + 's'},
+    //color #{($i * 0.25) + 's'} ease-in #{($i * 0.25) + 's'},
+    //opacity #{($i * 0.25) + 's'} ease-in #{($i * 0.25) + 's'} !important;
+
+    transition: color 0.15s ease-out #{($i * 0.25) + 's'} !important;
+  }
+
+  $first: ($i - 1) * 0.25;
+  $second: $first + 0.25;
+  #{$special-button}.active::before {
+    border-top-color: $border-color !important;
+    border-right-color: $border-color !important;
+    transition: border-color 0s ease-out #{$first + 's'},
+    width 0.25s ease-out #{$first + 's'},
+    height 0.25s ease-out #{$second + 's'} !important;
+  }
+
+  $third: $second + 0.25;
+  $fourth: $third + 0.25;
+
+  #{$special-button}.active::after {
+    border-bottom-color: $border-color !important;
+    border-left-color: $border-color !important;
     transition: border-color 0s ease-out #{$third + 's'},
     width 0.25s ease-out #{$third + 's'},
     height 0.25s ease-out #{$fourth + 's'} !important;
@@ -306,7 +361,7 @@ $i: 1;
   position: relative;
 
   color: $background-color;
-  transition: color 0.25s ease-out;
+  //transition: color 0.25s ease-out;
 
   &:nth-child(1) {
     margin-right: 5px;
@@ -317,7 +372,7 @@ $i: 1;
   }
 
   &.active {
-    transition: color 0.25s ease-out 0.25s;
+    //transition: color 0.25s ease-out 0.15s;
     color: $secondary;
   }
 
@@ -349,40 +404,40 @@ $i: 1;
     height: calc(100% - 6px);
   }
 
-  &.active::before {
-    border-top-color: $border-color;
-    border-right-color: $border-color;
-    transition: width 0.25s ease-out,
-    height 0.25s ease-out 0.25s;
-  }
-
-  &.active::after {
-    border-bottom-color: $border-color;
-    border-left-color: $border-color;
-    transition: border-color 0s ease-out 0.5s,
-    width 0.25s ease-out 0.5s,
-    height 0.25s ease-out 0.75s;
-  }
+  //&.active::before {
+  //  border-top-color: $border-color;
+  //  border-right-color: $border-color;
+  //  transition: width 0.25s ease-out,
+  //  height 0.25s ease-out 0.25s;
+  //}
+  //
+  //&.active::after {
+  //  border-bottom-color: $border-color;
+  //  border-left-color: $border-color;
+  //  transition: border-color 0s ease-out 0.5s,
+  //  width 0.25s ease-out 0.5s,
+  //  height 0.25s ease-out 0.75s;
+  //}
 
   &::before, &::after {
     transition: opacity 1s linear;
   }
 
-  &.active::before {
-    border-top-color: $border-color;
-    border-right-color: $border-color;
-    transition: border-color 0s ease-out #{0 + 's'},
-    width 0.25s ease-out #{0 + 's'},
-    height 0.25s ease-out #{0.25 + 's'} !important;
-  }
-
-  &.active::after {
-    border-bottom-color: $border-color;
-    border-left-color: $border-color;
-    transition: border-color 0s ease-out #{0.5 + 's'},
-    width 0.25s ease-out #{0.5 + 's'},
-    height 0.25s ease-out #{0.75 + 's'} !important;
-  }
+  //&.active::before {
+  //  border-top-color: $border-color;
+  //  border-right-color: $border-color;
+  //  transition: border-color 0s ease-out #{0 + 's'},
+  //  width 0.25s ease-out #{0 + 's'},
+  //  height 0.25s ease-out #{0.25 + 's'} !important;
+  //}
+  //
+  //&.active::after {
+  //  border-bottom-color: $border-color;
+  //  border-left-color: $border-color;
+  //  transition: border-color 0s ease-out #{0.5 + 's'},
+  //  width 0.25s ease-out #{0.5 + 's'},
+  //  height 0.25s ease-out #{0.75 + 's'} !important;
+  //}
 }
 
 /* End Button */
