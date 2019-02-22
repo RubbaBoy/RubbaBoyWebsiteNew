@@ -23,7 +23,7 @@ class AppComponent implements OnInit {
     });
 
     Future.delayed(Duration(milliseconds: 100), () => querySelector('body').classes.add('loaded'))
-        .then((ignored) => new Future.delayed(Duration(milliseconds: 10), () => querySelector('.links-bar').classes.add('ready')));
+        .then((ignored) => new Future.delayed(Duration(milliseconds: 1500), () => querySelector('.links-bar').classes.add('ready')));
 
     new Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (scrolled) {
@@ -129,23 +129,23 @@ class AppComponent implements OnInit {
   var experiences = [
     {
       'name': 'Java',
-      'description': 'I have been using Java for over 4 years. I am very expierenced in the Spigot/Bukkit APIs, with many projects and collaborations under my belt.'
+      'description': 'I have been using Java for over 5 years. I am familiar with many large libraries/frameworks, and have led teams and done many collaborations over the years'
     },
     {
       'name': 'PHP',
-      'description': 'I have been using PHP for around 3 years. I have several private and public projects integrated with several other technologies as well.'
+      'description': 'I have been using PHP for around 4 years. I have several private and public projects integrated with several other technologies as well.'
     },
     {
       'name': 'JavaScript',
-      'description': 'I have a around 4 years in JavaScript knowledge, having used many large libraries in many projects, often in combination with other technologies.'
+      'description': 'I have a around 5 years in JavaScript knowledge, having used many large libraries in many projects, often in combination with other technologies.'
     },
     {
       'name': 'HTML',
-      'description': 'HTML has been the base of my web projects for the 4 years I\'ve been developing for the web.'
+      'description': 'HTML has been the base of my web projects for the 5 years I\'ve been developing for the web.'
     },
     {
       'name': 'CSS',
-      'description': 'CSS, being the only turing complete styling language for the web, has deminished my reputation as a creator by making my websites look significantly worse for the past 4 years.'
+      'description': 'CSS, being the only turing complete styling language for the web, has deminished my reputation as a creator by making my websites look significantly worse for the past 5 years.'
     },
     {
       'name': 'Dart',
@@ -153,18 +153,18 @@ class AppComponent implements OnInit {
     },
     {
       'name': 'Brainfuck',
-      'description': 'I\'ve been programming with Brainfuck for around 2 years on and off when I get the chance to, helping me pass the time away from home.'
+      'description': 'I\'ve been programming with Brainfuck for around 5 years on and off when I get the chance to.'
     },
     {
       'name': 'SQL',
-      'description': 'SQL, though not a language, has been vital for many of my projects for the past 2 years, primarily using MySQL and SQLite.'
+      'description': 'SQL, though not a language, has been vital for many of my projects for the past 3 years, primarily using MySQL and SQLite.'
     },
   ];
 
   var projects = [
     {
       'name': 'Craftathon',
-      'description': 'Craftathon is an annual weekend long charity event in Minecraft where we raised \$6,455.23 Note: I am the Lead Developer for this, NOT the Organizer, that belongs to another member of our awesome team, Mistri.',
+      'description': 'Craftathon is an annual weekend long charity event in Minecraft where we have raised \$7,599 so far. I am the Lead Developer for this, NOT the Organizer, which belongs to another member of our awesome team, Mistri.',
       'github': null,
       'release': 'https://craftathon.org/'
     },
@@ -175,22 +175,40 @@ class AppComponent implements OnInit {
       'release': 'https://ms-paint-i.de/'
     },
     {
+      'name': 'NewOCR',
+      'description': 'A custom OCR without using Machine Learning in Java, using little-used techniques to produce accurate results across many fonts and font sizes.',
+      'github': 'https://github.com/RubbaBoy/NewOCR',
+      'release': 'https://search.maven.org/artifact/com.uddernetworks.newocr/NewOCR/'
+    },
+    {
+      'name': 'shitprojects.download',
+      'description': 'A website to create custom subdomains to route to any URL, with link visit counting.',
+      'github': null,
+      'release': 'https://shitprojects.download/'
+    },
+    {
       'name': 'Mine Fortress 2',
       'description': 'Mine Fortress 2 is a remake of the popular game Team Fortress 2. It has features never before seen in plugins to this day, with seamless graphics and customizability.',
       'github': 'https://github.com/RubbaBoy/MineFortress2/',
       'release': 'https://www.spigotmc.org/resources/mine-fortress-2.32824/'
     },
     {
-      'name': 'shitprojects.download',
-      'description': 'A website to create custom subdomains to route to any URL, with link visit counting.',
-      'github': null,
-      'release': 'https://shitprojects.download/upload'
+      'name': 'CodeFormatter',
+      'description': 'Formats your code (Or whole GitHub repos) by moving all brackets and semicolons to the side in a perfect line to match your perfect code.',
+      'github': 'https://github.com/RubbaBoy/CodeFormatter',
+      'release': 'https://rubbaboy.me/codeformatter/'
     },
     {
       'name': 'Tap The Pickle',
       'description': 'Tap The Pickle is an Android app that allows you to tap, rub, shake, or talk to a pickle with hats, faces, skins, and backgrounds, with full Bluetooth support to play with friends.',
       'github': null,
       'release': 'https://play.google.com/store/apps/details?id=tap.the.pickle'
+    },
+    {
+      'name': 'MC Book IDE',
+      'description': 'MC Book IDE allows you to program Java in Minecraft books, with highlighyting and error displaying features available.',
+      'github': 'https://github.com/RubbaBoy/MCBookIDE',
+      'release': 'https://www.spigotmc.org/resources/mc-book-ide.50946/'
     },
     {
       'name': 'Book Utils',
@@ -203,12 +221,6 @@ class AppComponent implements OnInit {
       'description': 'Config Helper is a Spigot API to help users create and use configuration files with ease.',
       'github': 'https://github.com/RubbaBoy/ConfigHelper/',
       'release': 'https://www.spigotmc.org/threads/confighelper-api.285688/'
-    },
-    {
-      'name': 'CodeHelp',
-      'description': 'CodeHelp is an Intellij plugin for helping out users who often forget how to do specific things.',
-      'github': 'https://github.com/RubbaBoy/CodeHelp/',
-      'release': 'https://plugins.jetbrains.com/plugin/10228-codehelp'
     }
   ];
 }
