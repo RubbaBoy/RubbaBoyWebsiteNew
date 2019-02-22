@@ -65,16 +65,16 @@
         </div>
 
         <div class="project-examples">
-            <div class="project-card bordered" *ngFor="let project of projects">
+            <div class="project-card bordered" *ngFor="let project of projects" (mouseover)="onHoverProject($event)" (mouseleave)="onLeaveProject($event)">
                 <h2 class="section-header">{{project['name']}}</h2>
                 <div class="section">
                     <p>
                         {{project['description']}}
-                        <div class="expand-hidden">
-                            <a href="{{project['release']}}" *ngIf="project['release'] != null" target="_blank" class="button">Release</a>
-                            <a href="{{project['github']}}" *ngIf="project['github'] != null" target="_blank" class="button">GitHub</a>
-                        </div>
                     </p>
+                    <div class="expand-hidden">
+                        <a href="{{project['release']}}" *ngIf="project['release'] != null" target="_blank" class="special-button bordered">Release</a>
+                        <a href="{{project['github']}}" *ngIf="project['github'] != null" target="_blank" class="special-button bordered">GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>

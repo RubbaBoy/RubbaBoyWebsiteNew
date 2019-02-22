@@ -103,6 +103,11 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  align-items: stretch;
+
+  p {
+    margin-bottom: 32px;
+  }
 
   .bordered &::before,
   .bordered &::after {
@@ -261,20 +266,19 @@ $i: 1;
 .project-card {
   width: 300px;
   display: inline-block;
+  margin-bottom: 75px;
 
   & .section {
-    transition: padding-bottom 0.25s;
+    //transition: padding-bottom 0.25s;
     overflow: hidden;
-  }
-
-  &:hover .section {
-    padding-bottom: calc(1em + 50px);
+    height: calc(100% - 64px);
   }
 
   & .expand-hidden {
     z-index: 999;
     position: absolute;
-    margin-top: 2em;
+    bottom: 25px;
+    //margin-top: calc(100% - 75px); //TODO: FOR TESTING
   }
 }
 
@@ -290,6 +294,95 @@ $i: 1;
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
+}
+
+.special-button {
+  //border: $border-size solid $border-color;
+  font-size: 16px;
+  padding: 8px 13px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+
+  color: $background-color;
+  transition: color 0.25s ease-out;
+
+  &:nth-child(1) {
+    margin-right: 5px;
+  }
+
+  &:nth-child(2) {
+    margin-left: 5px;
+  }
+
+  &.active {
+    transition: color 0.25s ease-out 0.25s;
+    color: $secondary;
+  }
+
+  .bordered &::before,
+  .bordered &::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    border: $border-size solid transparent;
+    transition-duration: 0.25s;
+  }
+
+  .bordered &::before {
+    top: 0;
+    left: 0;
+  }
+
+  .bordered &::after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &.active::before,
+  &.active::after {
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+  }
+
+  &.active::before {
+    border-top-color: $border-color;
+    border-right-color: $border-color;
+    transition: width 0.25s ease-out,
+    height 0.25s ease-out 0.25s;
+  }
+
+  &.active::after {
+    border-bottom-color: $border-color;
+    border-left-color: $border-color;
+    transition: border-color 0s ease-out 0.5s,
+    width 0.25s ease-out 0.5s,
+    height 0.25s ease-out 0.75s;
+  }
+
+  &::before, &::after {
+    transition: opacity 1s linear;
+  }
+
+  &.active::before {
+    border-top-color: $border-color;
+    border-right-color: $border-color;
+    transition: border-color 0s ease-out #{0 + 's'},
+    width 0.25s ease-out #{0 + 's'},
+    height 0.25s ease-out #{0.25 + 's'} !important;
+  }
+
+  &.active::after {
+    border-bottom-color: $border-color;
+    border-left-color: $border-color;
+    transition: border-color 0s ease-out #{0.5 + 's'},
+    width 0.25s ease-out #{0.5 + 's'},
+    height 0.25s ease-out #{0.75 + 's'} !important;
+  }
 }
 
 /* End Button */

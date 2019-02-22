@@ -59,6 +59,32 @@ class AppComponent implements OnInit {
     });
   }
 
+  DivElement getProjectCard(Element child) {
+    if ((child is DivElement) && child.classes.contains('project-card')) {
+      return child;
+    } else {
+      if (child.parent != null) return getProjectCard(child.parent);
+    }
+
+    return null;
+  }
+
+  var expanded = [];
+
+  void onHoverProject(MouseEvent event) {
+    var div = getProjectCard(event.target);
+    div.querySelectorAll('.special-button').forEach((special) {
+      special.classes.add('active');
+    });
+  }
+
+  void onLeaveProject(MouseEvent event) {
+    var div = getProjectCard(event.target);
+    div.querySelectorAll('.special-button').forEach((special) {
+      special.classes.remove('active');
+    });
+  }
+
   Element getSection(String section, {String queryClass: '.seek-node'}) {
     return querySelectorAll(queryClass).firstWhere((element) {
       return element.getAttribute('section') == section;
