@@ -18,11 +18,12 @@ class AppComponent implements OnInit {
     var lastChecked = -1;
     var scrolled = true;
 
-    querySelector(".loading-square").remove();
-
     querySelectorAll('a.seek-node').onClick.listen((event) {
       smoothScrolling(event, offset: -50, duration: 1000);
     });
+
+    Future.delayed(Duration(milliseconds: 100), () => querySelector('body').classes.add('loaded'))
+        .then((ignored) => new Future.delayed(Duration(milliseconds: 10), () => querySelector('.links-bar').classes.add('ready')));
 
     new Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (scrolled) {

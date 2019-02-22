@@ -65,6 +65,44 @@ body::-webkit-scrollbar-thumb {
 
 /* End scroll bar */
 
+.links-bar {
+  margin-top: 10px;
+
+  i {
+    transform: translateY(-20px);
+    opacity: 0;
+
+    .loaded & {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &.ready i {
+    transition: transform 150ms ease-out 0s !important;
+  }
+
+
+  a {
+    margin: 0 10px;
+
+    &:hover i {
+      transform: translateY(-3px);
+    }
+  }
+
+  $i: 1;
+  @while $i <= 4 {
+    a:nth-child(#{$i}) i {
+      transition: transform 500ms ease-out #{$i * 150 + 100}ms,
+      opacity 500ms ease-out #{$i * 150 + 100}ms;
+    }
+
+    $i: $i + 1;
+  }
+}
+
+
 .section-container {
   padding-bottom: 50px;
 }
@@ -174,6 +212,7 @@ body::-webkit-scrollbar-thumb {
   min-width: 100px;
   position: relative;
   margin: 0 auto;
+  padding: 0 15px;
 
   h3 {
     margin-top: 0;
@@ -257,50 +296,37 @@ $i: 1;
 @while $i <= 2 {
   $special-button: '.special-button:nth-child(#{$i})';
 
-  //#{$special-button}, #{$special-button}::before, #{$special-button}::after {
   #{$special-button} {
     transition: color 0.25s ease-out #{($i * 0.25) + 's'} !important;
-  }
-
-  #{$special-button} {
     &::before, &::after {
-      //color: red;
       transition: border-color 0.25s ease-out #{($i * 0.25) + 's'},
-        //opacity 10s linear #{($i * 1 + 0.25) + 's'},
       width 0s ease-out #{($i * 0.25 + 0.25) + 's'},
       height 0s ease-out #{($i * 0.25 + 0.25) + 's'};
     }
   }
 
   #{$special-button}.active {
-    //transition: border-color 0.25s ease-in #{($i * 0.25) + 's'},
-    //width 0 ease-in #{($i * 0.5) + 's'},
-    //height 0 ease-in #{($i * 0.5) + 's'},
-    //color #{($i * 0.25) + 's'} ease-in #{($i * 0.25) + 's'},
-    //opacity #{($i * 0.25) + 's'} ease-in #{($i * 0.25) + 's'} !important;
-
     transition: color 0.15s ease-out #{($i * 0.25) + 's'} !important;
-  }
 
-  $first: ($i - 1) * 0.25;
-  $second: $first + 0.25;
-  #{$special-button}.active::before {
-    border-top-color: $border-color !important;
-    border-right-color: $border-color !important;
-    transition: border-color 0s ease-out #{$first + 's'},
-    width 0.25s ease-out #{$first + 's'},
-    height 0.25s ease-out #{$second + 's'} !important;
-  }
+    $first: ($i - 1) * 0.25;
+    $second: $first + 0.25;
+    &::before {
+      border-top-color: $border-color !important;
+      border-right-color: $border-color !important;
+      transition: border-color 0s ease-out #{$first + 's'},
+      width 0.25s ease-out #{$first + 's'},
+      height 0.25s ease-out #{$second + 's'} !important;
+    }
 
-  $third: $second + 0.25;
-  $fourth: $third + 0.25;
-
-  #{$special-button}.active::after {
-    border-bottom-color: $border-color !important;
-    border-left-color: $border-color !important;
-    transition: border-color 0s ease-out #{$third + 's'},
-    width 0.25s ease-out #{$third + 's'},
-    height 0.25s ease-out #{$fourth + 's'} !important;
+    $third: $second + 0.25;
+    $fourth: $third + 0.25;
+    &::after {
+      border-bottom-color: $border-color !important;
+      border-left-color: $border-color !important;
+      transition: border-color 0s ease-out #{$third + 's'},
+      width 0.25s ease-out #{$third + 's'},
+      height 0.25s ease-out #{$fourth + 's'} !important;
+    }
   }
 
   $i: $i + 1;
@@ -324,7 +350,6 @@ $i: 1;
   margin-bottom: 75px;
 
   & .section {
-    //transition: padding-bottom 0.25s;
     overflow: hidden;
     height: calc(100% - 64px);
   }
@@ -333,7 +358,6 @@ $i: 1;
     z-index: 999;
     position: absolute;
     bottom: 25px;
-    //margin-top: calc(100% - 75px); //TODO: FOR TESTING
   }
 }
 
@@ -352,7 +376,6 @@ $i: 1;
 }
 
 .special-button {
-  //border: $border-size solid $border-color;
   font-size: 16px;
   padding: 8px 13px;
   cursor: pointer;
@@ -361,7 +384,6 @@ $i: 1;
   position: relative;
 
   color: $background-color;
-  //transition: color 0.25s ease-out;
 
   &:nth-child(1) {
     margin-right: 5px;
@@ -372,7 +394,6 @@ $i: 1;
   }
 
   &.active {
-    //transition: color 0.25s ease-out 0.15s;
     color: $secondary;
   }
 
@@ -402,76 +423,81 @@ $i: 1;
   &.active::after {
     width: calc(100% - 6px);
     height: calc(100% - 6px);
-  }
-
-  //&.active::before {
-  //  border-top-color: $border-color;
-  //  border-right-color: $border-color;
-  //  transition: width 0.25s ease-out,
-  //  height 0.25s ease-out 0.25s;
-  //}
-  //
-  //&.active::after {
-  //  border-bottom-color: $border-color;
-  //  border-left-color: $border-color;
-  //  transition: border-color 0s ease-out 0.5s,
-  //  width 0.25s ease-out 0.5s,
-  //  height 0.25s ease-out 0.75s;
-  //}
-
-  &::before, &::after {
     transition: opacity 1s linear;
   }
-
-  //&.active::before {
-  //  border-top-color: $border-color;
-  //  border-right-color: $border-color;
-  //  transition: border-color 0s ease-out #{0 + 's'},
-  //  width 0.25s ease-out #{0 + 's'},
-  //  height 0.25s ease-out #{0.25 + 's'} !important;
-  //}
-  //
-  //&.active::after {
-  //  border-bottom-color: $border-color;
-  //  border-left-color: $border-color;
-  //  transition: border-color 0s ease-out #{0.5 + 's'},
-  //  width 0.25s ease-out #{0.5 + 's'},
-  //  height 0.25s ease-out #{0.75 + 's'} !important;
-  //}
 }
 
 /* End Button */
 
-$break-small: 600px;
-$break-large: 1024px;
+//$break-xsmall: 768px;
+$break-small: 768px;
+$break-medium: 992px;
+$break-large: 1200px;
+$break-xlarge: 1600px;
 
 @mixin respond-to($media) {
-  @if $media == handhelds {
-    @media only screen and (max-width: $break-large - 1) { @content; }
+  @if $media == xsmall {
+    @media only screen and (max-width: $break-small - 1) { @content; }
   }
-  @else if $media == wide-screens {
+  @else if $media == small {
+    @media only screen and (min-width: $break-small) { @content; }
+  }
+  @else if $media == medium {
+    @media only screen and (min-width: $break-medium) { @content; }
+  }
+  @else if $media == large {
     @media only screen and (min-width: $break-large) { @content; }
+  }
+  @else if $media == xlarge {
+    @media only screen and (min-width: $break-xlarge) { @content; }
   }
 }
 
 #content {
-  @include respond-to(handhelds) {
+  @include respond-to(xsmall) {
+    width: 90vw !important;
+    margin-left: 5vw !important;
+  }
+
+  @include respond-to(small) {
     width: 80vw !important;
     margin-left: 10vw !important;
   }
 
-  @include respond-to(wide-screens) {
+  @include respond-to(medium) {
+    width: 70vw !important;
+    margin-left: 15vw !important;
+  }
+
+  @include respond-to(large) {
+    width: 60vw !important;
+    margin-left: 20vw !important;
+  }
+
+  @include respond-to(xlarge) {
     width: 50vw !important;
     margin-left: 25vw !important;
   }
 }
 
 .inner-content {
-  @include respond-to(handhelds) {
+  @include respond-to(xsmall) {
+    width: 90vw !important;
+  }
+
+  @include respond-to(small) {
     width: 80vw !important;
   }
 
-  @include respond-to(wide-screens) {
+  @include respond-to(medium) {
+    width: 70vw !important;
+  }
+
+  @include respond-to(large) {
+    width: 60vw !important;
+  }
+
+  @include respond-to(xlarge) {
     width: 50vw !important;
   }
 }
