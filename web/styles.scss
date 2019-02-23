@@ -66,14 +66,14 @@ body::-webkit-scrollbar-thumb {
 /* End scroll bar */
 
 .links-bar {
-  margin-top: 10px;
+  margin-top: -10px;
 
   i {
-    transform: translateY(-20px);
     opacity: 0;
+    transform: translateY(0px);
 
     .loaded & {
-      transform: translateY(0);
+      transform: translateY(20px);
       opacity: 1;
     }
   }
@@ -87,13 +87,13 @@ body::-webkit-scrollbar-thumb {
     margin: 0 10px;
 
     &:hover i {
-      transform: translateY(-3px);
+      transform: translateY(17px);
     }
   }
 
   $i: 1;
   @while $i <= 4 {
-    a:nth-child(#{$i}) i {
+    &.animations a:nth-child(#{$i}) i {
       transition: transform 500ms ease-out #{$i * 150 + 100}ms,
       opacity 500ms ease-out #{$i * 150 + 100}ms;
     }
@@ -102,9 +102,22 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+p a {
+  border-bottom: rgb(162, 160, 155) 1px dotted;
+  text-decoration: none;
+
+  &:hover {
+    border-bottom: none;
+    cursor: pointer;
+  }
+}
 
 .section-container {
   padding-bottom: 50px;
+}
+
+.section-container .section:first-of-type p {
+  z-index: 999;
 }
 
 .section-header {

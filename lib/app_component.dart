@@ -22,10 +22,11 @@ class AppComponent implements OnInit {
       smoothScrolling(event, offset: -50, duration: 1000);
     });
 
-    Future.delayed(Duration(milliseconds: 100), () => querySelector('body').classes.add('loaded'))
-        .then((ignored) => new Future.delayed(Duration(milliseconds: 1500), () => querySelector('.links-bar').classes.add('ready')));
+    Future.delayed(Duration(milliseconds: 350), () => querySelector('.links-bar').classes.add('animations'))
+    .then((ignored) => Future.delayed(Duration(milliseconds: 250), () => querySelector('body').classes.add('loaded')))
+    .then((ignored) => Future.delayed(Duration(milliseconds: 1500), () => querySelector('.links-bar').classes.add('ready')));
 
-    new Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    Timer.periodic(Duration(milliseconds: 100), (timer) {
       if (scrolled) {
         void activate(Element element) {
           var section = element.getAttribute('section');
