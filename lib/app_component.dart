@@ -134,7 +134,7 @@ class AppComponent implements OnInit {
     },
     {
       'name': 'PHP',
-      'description': 'I have been using PHP for around 4 years. I have several private and public projects integrated with several other technologies as well.'
+      'description': 'I have been using PHP on-and-off for around 4 years. I have several private and public projects integrated with several other technologies as well.'
     },
     {
       'name': 'JavaScript',
@@ -150,7 +150,7 @@ class AppComponent implements OnInit {
     },
     {
       'name': 'Dart',
-      'description': 'I have been learning Dart for several months now, primarily using AngularDart, with plans to use Flutter in the near future.'
+      'description': 'I have been learning Dart for several months now, primarily using AngularDart and Flutter.'
     },
     {
       'name': 'Brainfuck',
@@ -158,7 +158,7 @@ class AppComponent implements OnInit {
     },
     {
       'name': 'SQL',
-      'description': 'SQL, though not a language, has been vital for many of my projects for the past 3 years, primarily using MySQL and SQLite.'
+      'description': 'SQL, though not a language, has been vital for many of my projects for the past 4 years.'
     },
   ];
 
@@ -171,15 +171,39 @@ class AppComponent implements OnInit {
     },
     {
       'name': 'MS Paint IDE',
-      'description': 'Replace your current IDE - Syntax highlighting and code compiling for MS Paint using a custom OCR to read text from your MS Paint images.',
-      'github': 'https://github.com/RubbaBoy/MSPaintIDE/',
+      'description': 'Replace your current IDE - Syntax highlighting and code compiling for MS Paint using a custom OCR to read text from your MS Paint images. This has been my biggest personal project, consisting of 11 separate repositories.',
+      'github': 'https://github.com/MSPaintIDE/MSPaintIDE/',
       'release': 'https://ms-paint-i.de/'
     },
     {
       'name': 'NewOCR',
-      'description': 'A custom OCR without using Machine Learning in Java, using little-used techniques to produce accurate results across many fonts and font sizes.',
+      'description': 'A custom OCR without using Neural Networks in Java. This was a huge project involving a lot of research, featuring thorough documentation.',
       'github': 'https://github.com/RubbaBoy/NewOCR',
       'release': 'https://search.maven.org/artifact/com.uddernetworks.newocr/NewOCR/'
+    },
+    {
+      'name': 'ChatFilter',
+      'description': 'A fast and advanced chat filter made for Craftathon. Full specs and brnachmarking are available.',
+      'github': 'https://github.com/RubbaBoy/ChatFilter',
+      'release': null
+    },
+    {
+      'name': 'EmojIDE',
+      'description': 'A working and reactive IDE in Discord emojis, featuring emoji management across 41 Discord servers.',
+      'github': 'https://github.com/RubbaBoy/EmojIDE',
+      'release': 'https://www.youtube.com/watch?v=06pMgnB6e6o'
+    },
+    {
+      'name': 'BFJVM',
+      'description': 'A program to compile Brainfuck into JVM classes without the use of any libraries or external tools for compiling.',
+      'github': 'https://github.com/RubbaBoy/BFJVM',
+      'release': null
+    },
+    {
+      'name': 'MovieBot',
+      'description': 'A Discord bot to convert movies into gifs, syncing them up to audio in a voice channel. For the 2019 Discord Hack Week.',
+      'github': 'https://github.com/RubbaBoy/MovieBot',
+      'release': null
     },
     {
       'name': 'shitprojects.download',
@@ -188,40 +212,16 @@ class AppComponent implements OnInit {
       'release': 'https://shitprojects.download/'
     },
     {
-      'name': 'Mine Fortress 2',
-      'description': 'Mine Fortress 2 is a remake of the popular game Team Fortress 2. It has features never before seen in plugins to this day, with seamless graphics and customizability.',
-      'github': 'https://github.com/RubbaBoy/MineFortress2/',
-      'release': 'https://www.spigotmc.org/resources/mine-fortress-2.32824/'
-    },
-    {
       'name': 'CodeFormatter',
       'description': 'Formats your code (Or whole GitHub repos) by moving all brackets and semicolons to the side in a perfect line to match your perfect code.',
       'github': 'https://github.com/RubbaBoy/CodeFormatter',
       'release': 'https://rubbaboy.me/codeformatter/'
     },
     {
-      'name': 'Tap The Pickle',
-      'description': 'Tap The Pickle is an Android app that allows you to tap, rub, shake, or talk to a pickle with hats, faces, skins, and backgrounds, with full Bluetooth support to play with friends.',
-      'github': null,
-      'release': 'https://play.google.com/store/apps/details?id=tap.the.pickle'
-    },
-    {
-      'name': 'MC Book IDE',
-      'description': 'MC Book IDE allows you to program Java in Minecraft books, with highlighyting and error displaying features available.',
-      'github': 'https://github.com/RubbaBoy/MCBookIDE',
-      'release': 'https://www.spigotmc.org/resources/mc-book-ide.50946/'
-    },
-    {
-      'name': 'Book Utils',
-      'description': 'Book Utils gives you master control over books in your Spigot server, with importing, exporting, modification and more to books.',
-      'github': 'https://github.com/RubbaBoy/BookUtils/',
-      'release': 'https://www.spigotmc.org/resources/book-utils.42076/'
-    },
-    {
-      'name': 'Config Helper',
-      'description': 'Config Helper is a Spigot API to help users create and use configuration files with ease.',
-      'github': 'https://github.com/RubbaBoy/ConfigHelper/',
-      'release': 'https://www.spigotmc.org/threads/confighelper-api.285688/'
+      'name': 'WSS',
+      'description': 'Convert nested CSS into full webpages, with the ability to recreate any webpage in just CSS.',
+      'github': 'https://github.com/RubbaBoy/WSS',
+      'release': null
     }
   ];
 }
