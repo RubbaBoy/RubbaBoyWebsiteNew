@@ -189,7 +189,7 @@ class AppComponent implements OnInit {
     },
     {
       'name': 'EmojIDE',
-      'description': 'A working and reactive IDE in Discord emojis, featuring emoji management across 41 Discord servers.',
+      'description': 'A working and reactive IDE in Discord emojis, featuring emoji management across 41 Discord servers. This was made for the r/ProgrammerHumor Hackathon, getting second place.',
       'github': 'https://github.com/RubbaBoy/EmojIDE',
       'release': 'https://www.youtube.com/watch?v=06pMgnB6e6o'
     },
